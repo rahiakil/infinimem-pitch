@@ -1,0 +1,50 @@
+graph TB
+    subgraph "Traditional Computer System - Vertical Architecture"
+        A[User Applications<br/>Limited 200K Token Context]
+        A -->|System Calls| B[Operating System Kernel<br/>Context Switch Overhead]
+        B -->|Process Management| C[Process Scheduler<br/>32-64 registers per task]
+        C -->|Memory Allocation| D[Memory Manager<br/>Virtual Memory with 4KB pages]
+        D -->|File Operations| E[File System Manager<br/>Sequential I/O bottlenecks]
+        E -->|Hardware Interface| F[Device Driver Layer<br/>Hardware abstraction barriers]
+        F -->|Low-level Access| G[Hardware Abstraction Layer<br/>Limited parallel processing]
+        G -->|Instruction Processing| H[CPU Instruction Pipeline<br/>Sequential instruction execution]
+        H -->|Cache Management| I[Cache Controller<br/>L1/L2/L3 hierarchy limitations]
+        I -->|Memory Access| J[Memory Controller<br/>DRAM 100+ cycle latency]
+        J -->|Physical Storage| K[Physical RAM Banks<br/>Limited by physical constraints]
+        K -->|Persistent Storage| L[Storage I/O Controller<br/>Disk access bottlenecks]
+        L -->|Hardware Storage| M[Disk/SSD Hardware<br/>Mechanical/electrical limits]
+        M -->|Network Access| N[Network Interface Controller<br/>Packet-based communication]
+        N -->|Register Level| O[Hardware Registers<br/>Finite state storage]
+        O -->|Final Limitation| P[Limited Context Storage<br/>No persistent reasoning state<br/>No semantic understanding]
+        
+        %% Side annotations for limitations
+        C -.->|Limitation| C1[Context switching<br/>loses state between tasks]
+        D -.->|Limitation| D1[Page swapping<br/>breaks memory continuity]
+        H -.->|Limitation| H1[Pipeline stalls<br/>sequential processing only]
+        I -.->|Limitation| I1[Cache misses<br/>physical size constraints]
+        J -.->|Limitation| J1[Memory bandwidth<br/>hardware bottlenecks]
+        P -.->|Critical Gap| P1[NO SEMANTIC MEMORY<br/>NO CONTEXTUAL REASONING<br/>NO AGENT INTELLIGENCE]
+    end
+    
+    style A fill:#e3f2fd
+    style B fill:#f3e5f5
+    style C fill:#fff8e1
+    style D fill:#ffebee
+    style E fill:#e8f5e8
+    style F fill:#fce4ec
+    style G fill:#f1f8e9
+    style H fill:#fff3e0
+    style I fill:#ff9999
+    style J fill:#ffcc99
+    style K fill:#c8e6c9
+    style L fill:#b39ddb
+    style M fill:#ffcdd2
+    style N fill:#dcedc8
+    style O fill:#f8bbd9
+    style P fill:#81c784
+    style Q fill:#ffab91
+    style D1 fill:#ffcf9e
+    style E1 fill:#ffcf9e
+    style I1 fill:#ffcf9e
+    style J1 fill:#ffcf9e
+    style K1 fill:#ffcf9e
