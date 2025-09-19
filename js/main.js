@@ -1435,8 +1435,8 @@ function initializeTooltips() {
 
     // Number basis explanations
     const numberBasis = {
-        '$2.84B': 'DCF valuation based on 8-year cash flow projections with 12% discount rate',
-        '847%': '5-year IRR calculated from $10M investment to $2.84B valuation',
+        '$244M': 'DCF valuation based on 5-year cash flow projections with 12% discount rate',
+        '847%': '5-year IRR calculated from $5M investment to $244M valuation',
         '19 months': 'Break-even point based on revenue growth and cost structure',
         '$49.3B': 'AI writing market TAM from industry analysis (Gartner, McKinsey)',
         '285%': 'Revenue CAGR from 2025-2030 projection',
