@@ -4506,7 +4506,7 @@ graph TD
                     </div>
 
                     <!-- Simple Context Comparison -->
-                    <div class="glass-card full-width">
+                    <div class="glass-card full-width graphics-only-content">
                         <h3 class="card-title"><i class="fas fa-chart-area"></i> Context Budget Analysis: 64K vs 200K vs Infinimem</h3>
                         <div class="diagram-image">
                             <img src="images/diagrams/simple_context_comparison.png" 
@@ -4619,7 +4619,7 @@ graph TD
                     </div>
 
                     <!-- Intelligent Memory Planning Architecture -->
-                    <div class="glass-card full-width">
+                    <div class="glass-card full-width graphics-only-content">
                         <h3 class="card-title"><i class="fas fa-brain"></i> Intelligent Memory Planning Architecture</h3>
                         <div class="diagram-image">
                             <img src="images/diagrams/intelligent_memory_planning.png" 
@@ -4712,6 +4712,22 @@ graph TD
 
     <script src="js/liquid-glass.js"></script>
     
+    <style>
+        /* Ensure graphics-only content is only visible in graphics tab */
+        .graphics-only-content {
+            display: none;
+        }
+        
+        #graphics.active .graphics-only-content {
+            display: block;
+        }
+        
+        /* Alternative approach - hide by default and show only when graphics tab is active */
+        body:not(.graphics-active) .graphics-only-content {
+            display: none !important;
+        }
+    </style>
+    
     <script>
         // Zoom functionality for diagrams
         function zoomDiagram(button, factor) {
@@ -4750,6 +4766,33 @@ graph TD
                 cardContent.style.maxHeight = 'none';
             }
         }
+        
+        // Manage graphics-only content visibility
+        document.addEventListener('DOMContentLoaded', function() {
+            // Function to update graphics visibility
+            function updateGraphicsVisibility() {
+                const graphicsTab = document.getElementById('graphics');
+                const body = document.body;
+                
+                if (graphicsTab && graphicsTab.classList.contains('active')) {
+                    body.classList.add('graphics-active');
+                } else {
+                    body.classList.remove('graphics-active');
+                }
+            }
+            
+            // Initial check
+            updateGraphicsVisibility();
+            
+            // Listen for tab changes
+            const tabButtons = document.querySelectorAll('.nav-tab');
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Delay to ensure tab change has processed
+                    setTimeout(updateGraphicsVisibility, 100);
+                });
+            });
+        });
     </script>
 </body>
 </html>
